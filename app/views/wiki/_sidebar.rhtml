@@ -14,10 +14,14 @@ function toggle_hierarchy_tree(id) {
 }
 //]]>
 </script>
-
 <h3><%= l(:label_wiki) %></h3>
+
+<% if @wiki && @wiki.sidebar -%>
+  <%= textilizable @wiki.sidebar.content, :text %>
+<% end -%>
+
 <% if ( @page.parent != nil ) %>
-<%= link_to l(:field_parent_title), {:action => 'index', :page => @page.parent.pretty_title} %><br />
+  <%= link_to l(:field_parent_title), {:action => 'index', :page => @page.parent.pretty_title} %><br />
 <% end %>
 <%= link_to l(:field_start_page), {:action => 'index', :page => nil} %><br />
 <%= link_to l(:label_index_by_title), {:action => 'special', :page => 'Page_index'} %><br />
